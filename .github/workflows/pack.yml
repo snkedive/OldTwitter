@@ -38,5 +38,5 @@ jobs:
       - name: Upload for Chromium
         uses: actions/upload-artifact@v4
         with:
-          name: OldTwitterChrome.crx
+          name: OldTwitterChrome
           path: ${{ github.workspace }}/OldTwitterChrome.crx
