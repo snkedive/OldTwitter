@@ -32,7 +32,19 @@ chrome.webRequest.onBeforeRequest.addListener(
     for (let i = 0; i < redirectUrls.length; i++) {
       if (details.url.includes(redirectUrls[i][0])) {
         return {
-          redirectUrl: chrome.runtime.getURL(redirectUrls[i][1]),
+          cancel:
+            // excludes
+            details.originUrl &&
+            !details.originUrl.includes("newtwitter=true") &&
+            !details.originUrl.includes("/i/flow/login") &&
+            !details.originUrl.includes("/settings/download_your_data") &&
+            !details.originUrl.includes("/i/broadcasts") &&
+            !details.originUrl.includes("/i/communitynotes") &&
+            !details.originUrl.includes("tweetdeck.twitter.com") &&
+            !details.url.includes("ondemand.s.") &&
+            !details.url.includes("vendor.") &&
+            // includes
+            details.url.includes("abs.twimg.com/responsive-web/client-web"),
         };
       }
     }
