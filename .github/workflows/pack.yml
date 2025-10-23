@@ -39,7 +39,6 @@ jobs:
         with:
           zipFilePath: '../OldTwitterFirefox.zip'
           xpiFilePath: 'OldTwitterFirefox.xpi'
-          extensionId: a299b982-c5db-42c3-9378-cf18dbb37ee7
           jwtIssuer: ${{ secrets.FF_JWT_ISSUER }}
           jwtSecret: ${{ secrets.FF_JWT_SECRET }}
 
