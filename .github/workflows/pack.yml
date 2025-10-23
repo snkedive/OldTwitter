@@ -30,13 +30,27 @@ jobs:
       - name: Build CRX
         uses: cardinalby/webext-buildtools-chrome-crx-action@v2
         with:
-          # zip file made at the packExtensionDir step
           zipFilePath: '../OldTwitterChrome.zip'
           crxFilePath: 'OldTwitterChrome.crx'
           privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
+
+      - name: Build XPI
+        uses: cardinalby/webext-buildtools-firefox-sign-xpi-action@v1
+        with:
+          zipFilePath: '../OldTwitterFirefox.zip'
+          xpiFilePath: 'OldTwitterFirefox.xpi'
+          extensionId: a299b982-c5db-42c3-9378-cf18dbb37ee7
+          jwtIssuer: ${{ secrets.FF_JWT_ISSUER }}
+          jwtSecret: ${{ secrets.FF_JWT_SECRET }}
 
       - name: Upload for Chromium
         uses: actions/upload-artifact@v4
         with:
           name: OldTwitterChrome
           path: ${{ github.workspace }}/OldTwitterChrome.crx
+
+      - name: Upload for Firefox
+        uses: actions/upload-artifact@v4
+        with:
+          name: OldTwitterFirefox
+          path: ${{ github.workspace }}/OldTwitterFirefox.xpi
