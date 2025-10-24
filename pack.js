@@ -47,7 +47,7 @@ copyDir('./', '../OldTwitterFirefox').then(async () => {
         }
     }
     if(args[0] === '-a') {
-      manifest.browser_specific_settings.gecko.id = "oldtwitter@dimden.dev";
+      manifest.browser_specific_settings.gecko.id = "oldtwitter@cammie.dev";
     } else {
       setTimeout(() => console.warn("Warning: Extension ID is not set."), 1500);
     }
